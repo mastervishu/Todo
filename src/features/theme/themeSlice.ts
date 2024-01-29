@@ -1,7 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { Tuple, createSlice } from "@reduxjs/toolkit";
+
+interface Theme {
+    theme: boolean
+}
 
 const initialState = {
-    theme: true,
+    theme: true ,
 }
 
 const themeSlice = createSlice({
@@ -10,6 +14,7 @@ const themeSlice = createSlice({
     reducers: {
         toggleTheme: (state) => {
             state.theme = !state.theme
+            localStorage.setItem("theme", JSON.stringify(state.theme))
         },
     }
 });
